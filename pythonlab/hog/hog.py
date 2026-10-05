@@ -103,7 +103,11 @@ def num_factors(n):
 def sus_points(score):
     """Return the new score of a player taking into account the Sus Fuss rule."""
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    if is_prime(num_factors(score)):
+        score += 1
+        while not is_prime(score):
+            score += 1
+    return score
     # END PROBLEM 4
 
 
@@ -112,7 +116,9 @@ def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     PLAYER_SCORE and then rolls NUM_ROLLS DICE, *including* Sus Fuss.
     """
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    turn_points = take_turn(num_rolls, player_score, opponent_score, dice)
+    new_score = player_score + turn_points
+    return sus_points(new_score)
     # END PROBLEM 4
 
 
